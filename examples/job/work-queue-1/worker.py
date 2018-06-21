@@ -17,5 +17,7 @@
 # Just prints standard out and sleeps for 10 seconds.
 import sys
 import time
-print("Processing " + sys.stdin.lines())
+lines = sys.stdin.readlines()
+for i in range(len(lines)):
+    print("Processing " + lines[i])
 time.sleep(10)
