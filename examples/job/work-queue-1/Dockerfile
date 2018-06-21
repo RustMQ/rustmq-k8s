@@ -21,4 +21,4 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 COPY ./worker.py /worker.py
 
-CMD  env && python --version && /usr/bin/amqp-consume --url=$BROKER_URL -q $QUEUE -c 1 /worker.py
+CMD  /usr/bin/amqp-consume --url=$BROKER_URL -q $QUEUE -c 1 /worker.py
