@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rustmq-web
+  labels:
+    app: rustmq-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rustmq-web
+  template:
+    metadata:
+      labels:
+        app: rustmq-web
+    spec:
+      containers:
+      - name: rustmq-web
+        image: rustmq/web:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PORT
+          value: '5000'
+        - name: REDISCLOUD_URL
+          value: redis://:my-secret@redis-bitnami-master
+        - name: REDIS_CONNECTION_MAX_SIZE
+          value: '64'
+        - name: RUST_BACKTRACE
+          value: full
+        - name: RUST_LOG
+          value: info
+        ports:
+        - containerPort: 5000
+          name: rustmq-web-port
