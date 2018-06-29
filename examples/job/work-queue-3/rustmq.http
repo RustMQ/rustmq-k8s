@@ -1,0 +1,66 @@
+GET http://10.0.0.228:31664
+Content-Type: application/json
+
+###
+
+GET http://10.0.0.228:31664/3/projects/1/queues
+content-type: application/json
+
+###
+
+PUT http://10.0.0.228:31664/3/projects/1/queues/job1
+content-type: application/json
+
+{
+  "queue": {
+    "message_timeout": 60,
+    "message_expiration": 3600,
+    "type": "pull"
+  }
+}
+
+###
+
+POST http://10.0.0.228:31664/3/projects/1/queues/job1/messages
+content-type: application/json
+
+{
+  "messages": [
+    {
+      "body": "apple",
+      "delay": 0
+    },
+    {
+      "body": "banana",
+      "delay": 0
+    },
+    {
+      "body": "cherry",
+      "delay": 0
+    },
+    {
+      "body": "date",
+      "delay": 0
+    },
+    {
+      "body": "fig",
+      "delay": 0
+    },
+    {
+      "body": "grape",
+      "delay": 0
+    },
+    {
+      "body": "lemon",
+      "delay": 0
+    },
+    {
+      "body": "melon",
+      "delay": 0
+    },
+    {
+      "body": "orange",
+      "delay": 0
+    }
+  ]
+}

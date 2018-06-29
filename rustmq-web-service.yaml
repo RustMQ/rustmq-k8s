@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rustmq-web-service
+  labels:
+    app: rustmq-web
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: rustmq-web-port
+    protocol: TCP
+  selector:
+    app: rustmq-web
